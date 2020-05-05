@@ -6,7 +6,7 @@ let randomNumber = Math.floor(Math.random() * 100) + 1;
 let userGuess;
 let count = 0;
 
-console.log(randomNumber); //del
+console.log(randomNumber);  // for testing purposes
 
 const checkGuess = function(){
     result.classList.remove('justRight', 'tooBig', 'tooSmall', 'tooMany');
@@ -46,7 +46,7 @@ const reset = function(){
     let resetButton = document.querySelector('button');
     resetButton.parentNode.removeChild(resetButton);
     count = 0;
-    previousGuesses.innerHTML = 'Previous guesses: ';
+    previousGuesses.innerHTML = '';
     result.innerHTML = '';
     result.classList.remove('justRight', 'tooMany');
     document.getElementById('guess').disabled = false;
@@ -58,6 +58,9 @@ const reset = function(){
 form.addEventListener('submit', e => {
     e.preventDefault();
     count ++;
+    if(count==1){
+        previousGuesses.innerHTML = 'Previous guesses: '
+    }
     userGuess = Number(form.guess.value);
     form.guess.value = '';
     previousGuesses.innerHTML += (userGuess + '  ');
